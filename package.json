@@ -1,0 +1,11 @@
+{
+  "name": "pickit",
+  "version": "1.0.0",
+  "description": "An app that makes decision making easier",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Xiaokang Tang",
+  "license": "ISC"
+}
