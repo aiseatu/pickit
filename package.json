@@ -4,8 +4,24 @@
   "description": "An app that makes decision making easier",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "export NODE_ENV=test&& jasmine",
+    "start": "node src/server.js",
+    "server": "nodemon src/server.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "author": "Xiaokang Tang",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^3.3.1",
+    "request": "^2.83.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "concurrently": "^4.1.0",
+    "dotenv": "^5.0.0",
+    "express": "^4.16.2",
+    "express-flash": "0.0.2",
+    "express-session": "^1.15.6"
+  }
 }
