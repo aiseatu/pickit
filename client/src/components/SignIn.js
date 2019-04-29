@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class SignUp extends Component {
+class SignIn extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -10,20 +10,21 @@ class SignUp extends Component {
     }
   }
 
-  handleSignUp = async e => {
+  handleSignIn = async e => {
     e.preventDefault();
-    const response = await fetch('/users/new', {
+    const response = await fetch('/users/sign_in', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email: this.state.email, password: this.state.password })
+      body: JSON.stringify({ email: this.state.email, password: this.state.password }),
     });
-    const body = await response.json();
-    console.log(body);
-    if(body.error === "Validation error"){
-      window.alert("Not valid Email")
+
+    if(response.status == 401) {
+      window.alert("Invalid email or password");
     } else {
+      const body = await response.json();
+      console.log(body);
       this.setState({ user: body });
       this.props.setUser(body);
     }
@@ -33,7 +34,7 @@ class SignUp extends Component {
   render(){
     return (
       <div>
-        <form onSubmit={this.handleSignUp}>
+        <form onSubmit={this.handleSignIn}>
           <input
             name="email"
             value={this.state.email}
@@ -48,11 +49,11 @@ class SignUp extends Component {
             type="password"
             placeholder="Password"
           />
-          <button type="submit">Sign Up</button>
+          <button type="submit">Sign In</button>
         </form>
       </div>
     )
   }
 }
 
-export default SignUp;
+export default SignIn;

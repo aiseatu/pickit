@@ -16,5 +16,21 @@ module.exports = {
         })
       }
     })
+  },
+
+  signIn(req, res, next){
+    passport.authenticate("local")(req, res, function(){
+      if(!req.user){
+        console.log('incorrect');
+        res.send({ error: "Sign in failed" });
+      } else {
+        res.send(req.user);
+      }
+    })
+  },
+
+  signOut(req, res, next){
+    req.logout();
+    res.send("signed out");
   }
 }

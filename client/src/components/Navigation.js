@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import SignUp from './SignUp';
+import SignIn from './SignIn';
+import SignOut from './SignOut';
 
 class Navigation extends Component {
   constructor(props){
     super(props);
     this.state = {
-      user: ''
+      user: '',
     }
   }
-  setUser(currentUser){
-    let user = currentUser;
+  setUser(user){
     this.setState({ user: user });
   }
 
@@ -21,9 +22,24 @@ class Navigation extends Component {
           <li>
             <Link to='/'>Home</Link>
           </li>
-          <li>
-            <SignUp setUser={this.setUser.bind(this)} />
-          </li>
+          {(this.state.user) ? (
+            <div>
+              <li>
+                <SignOut setUser={this.setUser.bind(this)} />
+              </li>
+            </div>
+          ) : (
+            <div>
+              <li>
+                <SignUp setUser={this.setUser.bind(this)} />
+              </li>
+              <li>
+                <SignIn setUser={this.setUser.bind(this)} />
+              </li>
+            </div>
+          )
+          }
+
         </ul>
       </div>
     )
