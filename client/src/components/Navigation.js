@@ -5,43 +5,41 @@ import SignIn from './SignIn';
 import SignOut from './SignOut';
 
 class Navigation extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      user: '',
-    }
-  }
-  setUser(user){
-    this.setState({ user: user });
-  }
+  // constructor(props){
+  //   super(props);
+  //   this.state = {
+  //     user: '',
+  //   }
+  //   this.setUser = this.setUser.bind(this);
+  // }
+  // setUser(user){
+  //   this.setState({ user: user });
+  // }
 
   render(){
     return(
-      <div>
-        <ul>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          {(this.state.user) ? (
-            <div>
-              <li>
-                <SignOut setUser={this.setUser.bind(this)} />
-              </li>
-            </div>
-          ) : (
-            <div>
-              <li>
-                <SignUp setUser={this.setUser.bind(this)} />
-              </li>
-              <li>
-                <SignIn setUser={this.setUser.bind(this)} />
-              </li>
-            </div>
-          )
-          }
-
-        </ul>
-      </div>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div>
+          <Link className="navbar-brand" to='/'>Home</Link>
+            {(this.props.user) ? (
+              <div className="nav-item">
+                  <SignOut setUser={this.props.setUser} />
+              </div>
+            ) : (
+              <div>
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                  <SignUp setUser={this.props.setUser} />
+                </li>
+                <li className="nav-item">
+                  <SignIn setUser={this.props.setUser} />
+                </li>
+              </ul>
+              </div>
+            )
+            }
+        </div>
+      </nav>
     )
   }
 }

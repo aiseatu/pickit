@@ -28,28 +28,37 @@ class SignIn extends Component {
       this.setState({ user: body });
       this.props.setUser(body);
     }
-    this.setState({ email: '', password: '' });
+    //this.setState({ email: '', password: '' });
   }
+
 
   render(){
     return (
       <div>
-        <form onSubmit={this.handleSignIn}>
-          <input
-            name="email"
-            value={this.state.email}
-            onChange={e => this.setState({ email: e.target.value})}
-            type="text"
-            placeholder="Email"
-          />
-          <input
-            name="password"
-            value={this.state.password}
-            onChange={e => this.setState({ password: e.target.value})}
-            type="password"
-            placeholder="Password"
-          />
-          <button type="submit">Sign In</button>
+        <form className="form-inline"onSubmit={this.handleSignIn}>
+          <div>
+            <input
+              className="form-control mr-sm-2"
+              name="email"
+              id="inputEmail"
+              value={this.state.email}
+              onChange={e => this.setState({ email: e.target.value})}
+              type="text"
+              placeholder="Email"
+            />
+          </div>
+          <div>
+            <input
+              className="form-control mr-sm-2"
+              name="password"
+              id="inputPassword"
+              value={this.state.password}
+              onChange={e => this.setState({ password: e.target.value})}
+              type="password"
+              placeholder="Password"
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">Sign In</button>
         </form>
       </div>
     )

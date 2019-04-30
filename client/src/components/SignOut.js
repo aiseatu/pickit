@@ -16,7 +16,7 @@ class SignOut extends Component {
   render(){
     return(
       <div>
-        <button type="button" onClick={this.handleSignOut}>Sign Out</button>
+        <button type="button" className="btn btn-primary" onClick={this.handleSignOut}>Sign Out</button>
       </div>
     )
   }
