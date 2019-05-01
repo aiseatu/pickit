@@ -1,5 +1,7 @@
 const app = require("./app");
 const http = require("http");
+const express = require('express');
+const path = require('path');
 const port = normalizePort(process.env.PORT || "5000");
 app.set("port", port);
 
@@ -16,6 +18,14 @@ function normalizePort(val){
     return port;
   }
   return false;
+}
+if (process.env.NODE_ENV === "production") {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  // Handle React routing, return all requests to React app
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
 }
 server.on("listening", () => {
   console.log(`server is listening for requests on port ${server.address().port}`);
