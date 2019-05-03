@@ -24,7 +24,7 @@ class SignIn extends Component {
       window.alert("Invalid email or password");
     } else {
       const body = await response.json();
-      console.log(body);
+      //console.log(body);
       this.setState({ user: body });
       this.props.setUser(body);
     }

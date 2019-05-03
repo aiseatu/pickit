@@ -10,5 +10,15 @@ module.exports = {
     .catch((err) => {
       callback(err);
     })
+  },
+
+  addPost(newPost, callback){
+    return Post.create(newPost)
+    .then((post) => {
+      callback(null, post);
+    })
+    .catch((err) => {
+      callback(err);
+    });
   }
 }
