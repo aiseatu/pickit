@@ -4,7 +4,8 @@ import './App.css';
 
 import Landing from './components/Landing';
 import Navigation from './components/Navigation';
-import SignUp from './components/SignUp'
+import SignUp from './components/SignUp';
+import Post from './components/Post';
 
 class App extends Component {
   constructor(props){
@@ -24,8 +25,10 @@ class App extends Component {
         <Navigation
           user={this.state.user}
           setUser={this.setUser}/>
+        <Post user={this.state.user} />
         <main>
           <Route exact path="/" component={Landing} />
+          
         </main>
       </div>
     );

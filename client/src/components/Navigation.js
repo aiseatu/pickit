@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
 import SignOut from './SignOut';
+import Post from './Post';
 
 class Navigation extends Component {
   // constructor(props){
@@ -22,9 +23,15 @@ class Navigation extends Component {
         <div>
           <Link className="navbar-brand" to='/'>Home</Link>
             {(this.props.user) ? (
-              <div className="nav-item">
-                  <SignOut setUser={this.props.setUser} />
-              </div>
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                    <SignOut setUser={this.props.setUser} />
+                </li>
+                <li className="nav-item">
+                  <Link to='/posts'>Post</Link>
+                </li>
+              </ul>
+
             ) : (
               <div>
               <ul className="navbar-nav mr-auto">
