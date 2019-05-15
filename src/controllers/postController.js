@@ -19,7 +19,7 @@ module.exports = {
     if(!req.user){
       res.redirect(500, "/posts");
     } else {
-      console.log('got here');
+      //console.log('got here');
       let newPost = {
         title: req.body.title,
         body: req.body.body,
@@ -33,5 +33,16 @@ module.exports = {
         }
       })
     }
+  },
+
+  show(req, res, next){
+
+    postQueries.getPost(req.params.id, (err, post) => {
+      if(err || post == null){
+        res.redirect(500, "/posts");
+      } else {
+        res.send({post});
+      }
+    })
   }
 }

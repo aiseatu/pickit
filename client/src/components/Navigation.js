@@ -3,7 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
 import SignOut from './SignOut';
-import Post from './Post';
+import PostList from './PostList';
 
 class Navigation extends Component {
   // constructor(props){

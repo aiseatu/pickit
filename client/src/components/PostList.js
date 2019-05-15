@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 
-class Post extends Component {
+class PostList extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -59,8 +59,8 @@ class Post extends Component {
       <div>
         <div>
           {
-            this.state.posts.map((post) =>
-            <Link to={ `/posts/${post.id}`}>{post.title}</Link>)
+            this.state.posts.map((post, index) =>
+            <Link to={ `/posts/${post.id}` } key={index}>{post.title}</Link>)
           }
         </div>
         <div>
@@ -87,4 +87,4 @@ class Post extends Component {
   }
 }
 
-export default Post;
+export default PostList;

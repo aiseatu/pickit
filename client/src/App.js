@@ -5,7 +5,8 @@ import './App.css';
 import Landing from './components/Landing';
 import Navigation from './components/Navigation';
 import SignUp from './components/SignUp';
-import Post from './components/Post';
+import PostList from './components/PostList';
+import PostShow from './components/PostShow';
 
 class App extends Component {
   constructor(props){
@@ -25,10 +26,10 @@ class App extends Component {
         <Navigation
           user={this.state.user}
           setUser={this.setUser}/>
-        <Post user={this.state.user} />
         <main>
           <Route exact path="/" component={Landing} />
-          
+          <Route path="/posts" component={PostList} />
+          <Route path="/posts/:id" component={PostShow} />
         </main>
       </div>
     );
